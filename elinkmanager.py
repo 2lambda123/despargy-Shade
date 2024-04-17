@@ -53,7 +53,7 @@ class ELinkManager:
                          False: got no internet connection
         """
         try:
-            subprocess.check_output("ping -{} 1 {}".format('n' if platform.system().lower()=="windows" else 'c', host), shell=True)
+            subprocess.check_output("ping -{} 1 {}".format('n' if platform.system().lower()=="windows" else 'c', host), shell=False)
         except:
             return False
 

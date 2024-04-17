@@ -4,11 +4,11 @@ import os
 import signal
 
 def test1():
-    p = subprocess.Popen("python3 sdr_code.py", shell=True)
+    p = subprocess.Popen("python3 sdr_code.py", shell=False)
     print("Process ID of subprocess %s" % p.pid)
     sleep(4)
     #os.system("kill -9 {}".format(p.pid))
-    subprocess.Popen("kill -9 {}".format(p.pid), shell=True).communicate()
+    subprocess.Popen("kill -9 {}".format(p.pid), shell=False).communicate()
     #p.kill()
     #os.killpg(os.getpgid(p.pid), signal.SIGTERM)  # Send the signal to all the process groups
     # Send SIGTER (on Linux)
