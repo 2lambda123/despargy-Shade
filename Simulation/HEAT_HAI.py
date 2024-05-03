@@ -3,9 +3,9 @@ from time import sleep
 import queue
 from statistics import mean
 from counterdown import CounterDown
-import random
 import Pins as pins
 import RPi.GPIO as GPIO
+import secrets
 
 
 class HEAT_HAI(object):
@@ -93,7 +93,7 @@ class HEAT_HAI(object):
     def threaded_function_data(self):
 
         while not self.master.status_vector['RET_SUCS'] and not self.master.status_vector['KILL']:
-            temp = random.randrange(-14,20,1)
+            temp = secrets.SystemRandom().randrange(-14,20,1)
             #temp = self.data_manager.get_data("ext_temp")
             if temp is None:
                 self.info_logger.write_warning("HEAT: Invalid temperature data HEAT")
