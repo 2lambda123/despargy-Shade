@@ -2,13 +2,14 @@ import subprocess
 from time import sleep
 import os
 import signal
+from security import safe_command
 
 def test1():
     p = subprocess.Popen("python3 sdr_code.py", shell=True)
     print("Process ID of subprocess %s" % p.pid)
     sleep(4)
     #os.system("kill -9 {}".format(p.pid))
-    subprocess.Popen("kill -9 {}".format(p.pid), shell=True).communicate()
+    safe_command.run(subprocess.Popen, "kill -9 {}".format(p.pid), shell=True).communicate()
     #p.kill()
     #os.killpg(os.getpgid(p.pid), signal.SIGTERM)  # Send the signal to all the process groups
     # Send SIGTER (on Linux)
